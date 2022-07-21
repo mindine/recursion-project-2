@@ -49,20 +49,19 @@ times `advancedExponent` is being recursively called.
 function advancedExponent(b, n) {
   // Your code here
 
-  if (n === 0) return 1;
+ if (n === 0) return 1;
 
   if (n % 2 === 0) { // if n is an even number
+    let halfEven = advancedExponent(b, n / 2); // set variable to hold a function recursion for EVEN n
 
-    return advancedExponent(b , (n / 2)) ** 2; // square the results of (n / 2)
+    return halfEven * halfEven; // have that variable multiple each other to simulate squared
 
   } else { // if n is an odd number
+    let halfOdd = advancedExponent(b, (n - 1) / 2); // set variable to hold function recursion for ODD n
 
-    return b * (advancedExponent(b, (n - 1) / 2) ** 2); // square the results of (n - 1) / 2
-  }
-
+    return halfOdd * halfOdd * b; // multiply the function recursion to each other and  b
+  };
 }
-
-
 
 
 console.log(advancedExponent(2, 0)); // 1
